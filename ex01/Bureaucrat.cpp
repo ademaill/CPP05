@@ -5,14 +5,13 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ademaill <ademaill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/31 10:53:56 by ademaill          #+#    #+#             */
-/*   Updated: 2025/01/31 10:53:56 by ademaill         ###   ########.fr       */
+/*   Created: 2025/01/31 10:56:09 by ademaill          #+#    #+#             */
+/*   Updated: 2025/01/31 10:56:09 by ademaill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "Bureaucrat.hpp"
-#include "AForm.hpp"
+#include "Form.hpp"
 
 Bureaucrat::Bureaucrat(void) : _name("default"), _grade(150)
 {}
@@ -68,7 +67,7 @@ void    Bureaucrat::GradeDown(void)
         throw(Bureaucrat::GradeTooLowException());
 }
 
-void    Bureaucrat::signForm(AForm &form)
+void    Bureaucrat::signForm(Form &form)
 {
     try
     {
@@ -78,18 +77,6 @@ void    Bureaucrat::signForm(AForm &form)
     catch(const std::exception &e)
     {
         std::cerr << this->_name << " cannot sign " << form.getName() << " because : " << e.what() << std::endl;
-    }
-}
-
-void    Bureaucrat::executeForm(AForm const &form)
-{
-    try
-    {
-        form.execute(*this);
-    }
-    catch(const std::exception& e)
-    {
-        std::cerr << this->_name << " cannot execute " << form.getName() << " because : " << e.what() << std::endl;
     }
 }
 

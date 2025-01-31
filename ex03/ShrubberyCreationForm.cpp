@@ -37,6 +37,11 @@ ShrubberyCreationForm const &ShrubberyCreationForm::operator=(const ShrubberyCre
     return *this;
 }
 
+std::string const &ShrubberyCreationForm::getTarget() const
+{
+    return this->_target;
+}
+
 void    ShrubberyCreationForm::beExecute(const Bureaucrat &bureaucrat) const
 {
     std::ofstream outfile;

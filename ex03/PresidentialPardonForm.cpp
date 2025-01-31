@@ -44,6 +44,11 @@ void    PresidentialPardonForm::beExecute(const Bureaucrat &bureaucrat) const
     std::cout << this->_target << " has been pardoned by Zadof Beeblerox" << std::endl;
 }
 
+std::string const &PresidentialPardonForm::getTarget() const
+{
+    return this->_target;
+}
+
 std::ostream &operator<<(std::ostream &str, PresidentialPardonForm const &form)
 {
     return (str << form.getName() << " form, signed : " << form.getIsSigned() << ", sign grade : " << form.getSignGrade() << ", exec grade : " << form.getExecGrade() << std::endl);

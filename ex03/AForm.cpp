@@ -12,6 +12,9 @@
 
 #include "AForm.hpp"
 #include "Bureaucrat.hpp"
+#include "ShrubberyCreationForm.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "PresidentialPardonForm.hpp"
 
 AForm::AForm(void) : _name("default"), _isSigned(0), _signGrade(30), _execGrade(60)
 {
@@ -102,7 +105,12 @@ char const  *AForm::GradeTooLowException::what(void) const throw()
 
 char const *AForm::FormNotSignException::what(void) const throw()
 {
-    return "From not signed";
+    return "Form not signed";
+}
+
+char const *AForm::FormInvalidException::what(void) const throw()
+{
+    return "Invalid form request";
 }
 std::ostream    &operator<<(std::ostream &str, AForm const &form)
 {

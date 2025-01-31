@@ -1,7 +1,7 @@
 CXX = c++
 CFLAGSXX = -Wall -Werror -Wextra -std=c++98
 NAME = Bureaucrat
-SRCS = main.cpp Bureaucrat.cpp AForm.cpp PresidentialPardonForm.cpp RobotomyRequestForm.cpp ShrubberyCreationForm.cpp
+SRCS = main.cpp Bureaucrat.cpp Form.cpp
 HEADER = Bureaucrat.hpp
 OBJ = $(SRCS:.cpp=.o)
 

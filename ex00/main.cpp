@@ -1,54 +1,71 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ademaill <ademaill@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/01/28 10:19:48 by ademaill          #+#    #+#             */
+/*   Updated: 2025/01/28 11:59:28 by ademaill         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Bureaucrat.hpp"
-#include "Form.hpp"
 
-int main(void)
+int	main()
 {
-    {
-        try
-        {
-            Form form0("A99", 0, 5);
-            std::cout << form0 << std::endl;
-        }
-        catch(const std::exception& e)
-        {
-            std::cerr << e.what() << std::endl;
-        }
-    }
-
-    std::cout << "\n ---------------------- \n\n";
-
-    {
-        try
-        {
-            Bureaucrat val("Val", 15);
-            Form form("b58", 20, 45);
-            std::cout << val << std::endl;
-            std::cout << form << std::endl;
-            val.signForm(form);
-            std::cout << form << std::endl;
-        }
-        catch(const std::exception& e)
-        {
-            std::cerr << e.what() << std::endl;
-        }
-    }
-
-    std::cout << "\n ---------------------- \n\n";
-
-    {
-        try
-        {
-            Bureaucrat baptiste("baptiste", 35);
-            Form form2("c45", 20, 45);
-            std::cout << baptiste << std::endl;
-            std::cout << form2 << std::endl;
-            baptiste.signForm(form2);
-            std::cout << form2 << std::endl;
-        }
-        catch(const std::exception& e)
-        {
-            std::cerr << e.what() << std::endl;
-        }
-    }
-    return 0;
+	std::cout << "\033[34mConstructing\033[0m" << std::endl;
+	try 
+	{
+		Bureaucrat *a = new Bureaucrat("bdany", 151);
+		std::cout << a;
+	}
+	catch(std::exception &e)
+	{
+		std::cerr << "Error construction failed : " << e.what() << std::endl; 
+	}
+	try
+	{
+		Bureaucrat *b = new Bureaucrat("bdany", 0);
+		std::cout << b;
+	}
+	catch(std::exception &e)
+	{
+		std::cerr << "Error construction failed : " << e.what() << std::endl;
+	}
+	
+	Bureaucrat *a = new Bureaucrat("lolo", 1);
+	Bureaucrat *b = new Bureaucrat(*a);
+	std::cout << b << std::endl;
+	try
+	{
+		b->decrementGrade();
+	}
+	catch(std::exception &e)
+	{
+		std::cerr << "Error decrementation failed : " << e.what() << std::endl;
+	}
+	std::cout << b << std::endl;
+	try 
+	{
+		b->incrementGrade();
+		b->incrementGrade();
+	}
+	catch(std::exception &e)
+	{
+		std::cerr << "Error incrementation failed : " << e.what() << std::endl;
+	}
+	try
+	{
+		for (int i = 0; i < 150; i++)
+			a->decrementGrade();
+	}
+	catch(std::exception& e)
+	{
+		std::cerr << "Error incrementation failed : " << e.what() << std::endl;
+	}
+	
+	delete a;
+	delete b;
+	return 0;
 }
